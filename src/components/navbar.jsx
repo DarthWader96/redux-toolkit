@@ -17,7 +17,7 @@ const Navbar = () => {
 
     return (
         <div className="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom container pt-3">
-            <Link to={"/"} className="d-flex align-items-center text-decoration-none">
+            <Link to={loggedIn ? "/" : "/login"} className="d-flex align-items-center text-decoration-none">
                 <img src={logo} alt="" width={40} />
                 <h4 className="ms-2 mt-1">SAMMI</h4>
             </Link>
