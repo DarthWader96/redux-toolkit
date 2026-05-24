@@ -4,7 +4,6 @@ import { useSelector } from "react-redux"
 
 const Navbar = () => {
     const {loggedIn, user} = useSelector(state=>state.auth)
-    console.log(loggedIn)
     return (
         <div className="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom container pt-3">
             <Link to={"/"} className="d-flex align-items-center text-decoration-none">
