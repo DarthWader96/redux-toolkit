@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router"
-import { Login, Main, Navbar, Register } from "./components"
+import { ArticleDetail, Login, Main, Navbar, Register } from "./components"
 import AuthService from "./service/auth"
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
@@ -32,7 +32,7 @@ const App = () => {
 
   useEffect(() => {
     const token = getItem("token")
-    if(token){
+    if (token) {
       getUser()
     }
     getArticles()
@@ -41,11 +41,14 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/article/:slug" element={<ArticleDetail />} />
+        </Routes>
+      </div>
     </div>
   )
 }
