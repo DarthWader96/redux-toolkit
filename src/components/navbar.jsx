@@ -1,9 +1,20 @@
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 import { logo } from "../constants"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { removeItem } from "../helpers/persistance-storage"
+import { logoutUser } from "../slice/auth"
 
 const Navbar = () => {
-    const {loggedIn, user} = useSelector(state=>state.auth)
+    const { loggedIn, user } = useSelector(state => state.auth)
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const logoutHandler = () => {
+        dispatch(logoutUser())
+        removeItem("token")
+        navigate("/login")
+    }
+
     return (
         <div className="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom container pt-3">
             <Link to={"/"} className="d-flex align-items-center text-decoration-none">
@@ -14,7 +25,7 @@ const Navbar = () => {
                 {loggedIn ? (
                     <>
                         <p className="me-3 py-2 m-0">{user.username}</p>
-                        <button className="btn btn-outline-danger">Logout</button>
+                        <button className="btn btn-outline-danger" onClick={logoutHandler}>Logout</button>
                     </>
                 ) : (
                     <>
@@ -22,7 +33,7 @@ const Navbar = () => {
                         <Link to={"/register"} className="me-3 py-2 link-body-emphasis text-decoration-none">Register</Link>
                     </>
                 )}
-                
+
             </nav>
         </div>
     )
