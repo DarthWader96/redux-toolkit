@@ -11,8 +11,6 @@ const ValidationError = () => {
         })
     }, [error])
 
-    console.log(error !== null && errorMessage())
-
     return (
         error !== null && errorMessage().map(err=>(
             <div className="alert alert-danger my-2 p-1 text-start" role="alert" key={err}>
