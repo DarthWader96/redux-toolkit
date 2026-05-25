@@ -55,7 +55,7 @@ const Main = () => {
                     <button onClick={() => navigate(`/article/${item.slug}`)} type="button" className="btn btn-sm btn-outline-success">View</button>
                     {loggedIn && user.username === item.author.username && (
                       <>
-                        <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
+                        <button type="button" className="btn btn-sm btn-outline-secondary" onClick={()=>navigate(`/edit-article/${item.slug}`)}>Edit</button>
                         <button type="button" className="btn btn-sm btn-outline-danger" onClick={()=>deleteArticle(item.slug)}>Delete</button>
                       </>
                     )}
